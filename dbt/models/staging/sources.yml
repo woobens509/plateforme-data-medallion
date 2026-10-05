@@ -2,7 +2,6 @@ version: 2
 
 sources:
   - name: raw
-    database: plateforme_db
     schema: public
     tables:
       - name: raw_olist_orders_dataset
