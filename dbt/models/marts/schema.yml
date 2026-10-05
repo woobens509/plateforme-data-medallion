@@ -1,0 +1,41 @@
+version: 2
+
+models:
+  - name: fact_sales
+    description: "Table de faits unifiant les ventes Olist et Superstore"
+    columns:
+      - name: order_id
+        tests:
+          - not_null
+      - name: montant_vente
+        tests:
+          - not_null
+      - name: source
+        tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['olist', 'superstore']
+
+
+  - name: dim_customer
+    description: "Dimension clients, unifiée depuis les deux sources"
+    columns:
+      - name: customer_id
+        tests:
+          - not_null
+
+  - name: dim_product
+    description: "Dimension produits, unifiée depuis les deux sources"
+    columns:
+      - name: product_id
+        tests:
+          - not_null
+
+  - name: dim_date
+    description: "Dimension temps, calendrier complet des dates de vente observées"
+    columns:
+      - name: date_value
+        tests:
+          - unique
+          - not_null
